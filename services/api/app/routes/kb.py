@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
-from fastapi import APIRouter, Path as PathParam, Query
+from fastapi import APIRouter, Query
+from fastapi import Path as PathParam
 
 from app.errors import ApiError
 from app.graph.db import ro_query
 from app.graph.queries import K7, K8, K9, K10, K14, K15, K17
-from app.models import DISCLAIMER, Change, SubmitterRank, VariantStatus
+from app.models import Change, SubmitterRank, VariantStatus
 
 router = APIRouter()
 
@@ -67,9 +68,7 @@ def submitter_changes(
     limit: int = Query(200, ge=1, le=500),
 ) -> dict:
     _require_kb()
-    result = ro_query(
-        KB, K7, {"release": release, "submitter_id": submitter_id, "limit": limit}
-    )
+    result = ro_query(KB, K7, {"release": release, "submitter_id": submitter_id, "limit": limit})
     rows = _rows(result)
     changes = [
         Change(
