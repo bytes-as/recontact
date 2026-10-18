@@ -15,6 +15,7 @@ from app.graph.schema import apply_schema
 from app.logging import RequestIdMiddleware, configure_logging
 from app.main_version import VERSION
 from app.routes.health import router as health_router
+from app.routes.kb import router as kb_router
 
 configure_logging()
 log = logging.getLogger("recontact")
@@ -44,6 +45,7 @@ def build_app() -> FastAPI:
     application.add_middleware(RequestIdMiddleware)
     install_error_handlers(application)
     application.include_router(health_router)
+    application.include_router(kb_router)
     return application
 
 
