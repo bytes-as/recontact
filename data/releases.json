@@ -1,0 +1,46 @@
+{
+ "_readme": [
+  "Monthly ClinVar archives loaded into the kb graph. Monthly releases are published usually on the first Thursday of the month and copied to archive/ (ClinVar FTP README); weekly files are not archived, so only monthly archives are used (replayable).",
+  "Sizes verified on 18 Oct 2026 by directory listing. file_sha256 is filled in by scripts/extract_clinvar.py when it downloads the file and is stored on the Release node (K3)."
+ ],
+ "base_url": "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/",
+ "variants_from": {
+  "file": "archive/variant_summary_2026-10.txt.gz",
+  "bytes": 450727547,
+  "assembly": "GRCh38"
+ },
+ "releases": [
+  {
+   "id": "2026-08",
+   "kind": "BASE",
+   "file": "archive/submission_summary_2026-08.txt.gz",
+   "bytes": 385522058
+  },
+  {
+   "id": "2026-09",
+   "kind": "DELTA",
+   "file": "archive/submission_summary_2026-09.txt.gz",
+   "bytes": 387212719
+  },
+  {
+   "id": "2026-10",
+   "kind": "DELTA",
+   "file": "archive/submission_summary_2026-10.txt.gz",
+   "bytes": 394172714
+  }
+ ],
+ "eval_only": [
+  {
+   "id": "2024-10",
+   "file": "archive/2024/submission_summary_2024-10.txt.gz",
+   "bytes": 272294228,
+   "note": "used only to build eval/transitions_2024-10_2026-10.tsv; not loaded into kb; has 15 columns (no ContributesToAggregateClassification)"
+  }
+ ],
+ "next_expected": {
+  "id": "2026-11",
+  "file": "archive/submission_summary_2026-11.txt.gz",
+  "expected_around": "2026-11-05",
+  "note": "first Thursday of November; the Watcher polls the archive listing daily and ingests it as a DELTA during the judging window"
+ }
+}

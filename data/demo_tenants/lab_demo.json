@@ -1,0 +1,694 @@
+{
+ "_readme": [
+  "Fixed demo lab tenant. EVERY person is synthetic and labelled (fictional). Loaded into graph lab_demo by scripts/seed_demo.py with queries P1-P6 and P15.",
+  "Strings of the form {{NAME}} are placeholders resolved by scripts/seed_demo.py from real ClinVar class changes in the kb graph (rules in BLUEPRINT section 11) and recorded in data/demo_tenants/resolved.json. Integers replace *_VCV and *_VERSION placeholders.",
+  "Family A has exactly the structure of the fixture on which docs/queries.cypher C1 was verified: proband refused family contact, cousin consented to direct contact, mother tested negative, son exercised the right not to know, aunt lives in a letter-only jurisdiction, half-brother via the father only.",
+  "Expected verdicts are listed in BLUEPRINT section 11.2 and enforced by the golden tests (G047-G052)."
+ ],
+ "org": {
+  "id": "lab_demo",
+  "name": "Demo Diagnostics Lab (fictional)",
+  "kind": "lab",
+  "mirrors_submitter": "{{MIRRORED_SUBMITTER}}"
+ },
+ "jurisdictions": [
+  {
+   "code": "J-A",
+   "name": "Region A (illustrative rule set)",
+   "direct_allowed": true,
+   "note": "Illustrative: the care team may contact an at-risk relative directly when a consenting carrier's result supports it."
+  },
+  {
+   "code": "J-B",
+   "name": "Region B (illustrative rule set)",
+   "direct_allowed": false,
+   "note": "Illustrative: relatives are reached only through a family letter carried by the consenting carrier."
+  }
+ ],
+ "people": [
+  {
+   "pid": "A-PGF",
+   "label": "Paternal grandfather of Ana (fictional)",
+   "family": "A",
+   "sex": "M",
+   "birth_year": 1938,
+   "deceased": true,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "A-PGM",
+   "label": "Paternal grandmother of Ana (fictional)",
+   "family": "A",
+   "sex": "F",
+   "birth_year": 1941,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "A-MGF",
+   "label": "Maternal grandfather of Ana (fictional)",
+   "family": "A",
+   "sex": "M",
+   "birth_year": 1940,
+   "deceased": true,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "A-MGM",
+   "label": "Maternal grandmother of Ana (fictional)",
+   "family": "A",
+   "sex": "F",
+   "birth_year": 1943,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "A-FA",
+   "label": "Tomas, Ana's father (fictional)",
+   "family": "A",
+   "sex": "M",
+   "birth_year": 1962,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "A-MO",
+   "label": "Rosa, Ana's mother (fictional)",
+   "family": "A",
+   "sex": "F",
+   "birth_year": 1964,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "A-OW",
+   "label": "Elena, Tomas's former partner (fictional)",
+   "family": "A",
+   "sex": "F",
+   "birth_year": 1963,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "A-UN",
+   "label": "Pavel, Ana's uncle (fictional)",
+   "family": "A",
+   "sex": "M",
+   "birth_year": 1966,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "A-A2",
+   "label": "Irena, Ana's aunt (fictional)",
+   "family": "A",
+   "sex": "F",
+   "birth_year": 1969,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-B"
+  },
+  {
+   "pid": "A-MA",
+   "label": "Lucia, Ana's maternal aunt (fictional)",
+   "family": "A",
+   "sex": "F",
+   "birth_year": 1967,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "A-P",
+   "label": "Ana, proband (fictional)",
+   "family": "A",
+   "sex": "F",
+   "birth_year": 1988,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "A-S",
+   "label": "Mila, Ana's sister (fictional)",
+   "family": "A",
+   "sex": "F",
+   "birth_year": 1991,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "A-HS",
+   "label": "Jan, Ana's half-brother (fictional)",
+   "family": "A",
+   "sex": "M",
+   "birth_year": 1985,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "A-CH",
+   "label": "Leo, Ana's son (fictional)",
+   "family": "A",
+   "sex": "M",
+   "birth_year": 2012,
+   "deceased": false,
+   "contact_pref": "not_to_know",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "A-C",
+   "label": "Vera, Ana's cousin (fictional)",
+   "family": "A",
+   "sex": "F",
+   "birth_year": 1990,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "direct",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "A-CS",
+   "label": "Oto, Vera's brother (fictional)",
+   "family": "A",
+   "sex": "M",
+   "birth_year": 1993,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "B-P",
+   "label": "Noor, proband (fictional)",
+   "family": "B",
+   "sex": "F",
+   "birth_year": 1979,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "direct",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "B-S",
+   "label": "Sana, Noor's sister (fictional)",
+   "family": "B",
+   "sex": "F",
+   "birth_year": 1982,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "B-MO",
+   "label": "Hana, Noor's mother (fictional)",
+   "family": "B",
+   "sex": "F",
+   "birth_year": 1954,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "B-FA",
+   "label": "Omar, Noor's father (fictional)",
+   "family": "B",
+   "sex": "M",
+   "birth_year": 1951,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "B-D",
+   "label": "Lina, Noor's daughter (fictional)",
+   "family": "B",
+   "sex": "F",
+   "birth_year": 2008,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "C-P",
+   "label": "Arun, proband (fictional)",
+   "family": "C",
+   "sex": "M",
+   "birth_year": 1975,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "letter",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "C-B",
+   "label": "Dev, Arun's brother (fictional)",
+   "family": "C",
+   "sex": "M",
+   "birth_year": 1978,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "C-FA",
+   "label": "Ravi, Arun's father (fictional)",
+   "family": "C",
+   "sex": "M",
+   "birth_year": 1948,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "C-MO",
+   "label": "Meera, Arun's mother (fictional)",
+   "family": "C",
+   "sex": "F",
+   "birth_year": 1950,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "D-P",
+   "label": "Karl, proband (fictional, deceased 2025)",
+   "family": "D",
+   "sex": "M",
+   "birth_year": 1950,
+   "deceased": true,
+   "contact_pref": "ok",
+   "family_share": "direct",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "D-DA",
+   "label": "Greta, Karl's daughter (fictional)",
+   "family": "D",
+   "sex": "F",
+   "birth_year": 1980,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  },
+  {
+   "pid": "D-SO",
+   "label": "Felix, Karl's son (fictional)",
+   "family": "D",
+   "sex": "M",
+   "birth_year": 1983,
+   "deceased": false,
+   "contact_pref": "ok",
+   "family_share": "none",
+   "recontact_ok": true,
+   "jurisdiction": "J-A"
+  }
+ ],
+ "parent_of": [
+  {
+   "parent": "A-PGF",
+   "child": "A-FA"
+  },
+  {
+   "parent": "A-PGM",
+   "child": "A-FA"
+  },
+  {
+   "parent": "A-PGF",
+   "child": "A-UN"
+  },
+  {
+   "parent": "A-PGM",
+   "child": "A-UN"
+  },
+  {
+   "parent": "A-PGF",
+   "child": "A-A2"
+  },
+  {
+   "parent": "A-PGM",
+   "child": "A-A2"
+  },
+  {
+   "parent": "A-MGF",
+   "child": "A-MO"
+  },
+  {
+   "parent": "A-MGM",
+   "child": "A-MO"
+  },
+  {
+   "parent": "A-MGF",
+   "child": "A-MA"
+  },
+  {
+   "parent": "A-MGM",
+   "child": "A-MA"
+  },
+  {
+   "parent": "A-FA",
+   "child": "A-P"
+  },
+  {
+   "parent": "A-MO",
+   "child": "A-P"
+  },
+  {
+   "parent": "A-FA",
+   "child": "A-S"
+  },
+  {
+   "parent": "A-MO",
+   "child": "A-S"
+  },
+  {
+   "parent": "A-FA",
+   "child": "A-HS"
+  },
+  {
+   "parent": "A-OW",
+   "child": "A-HS"
+  },
+  {
+   "parent": "A-P",
+   "child": "A-CH"
+  },
+  {
+   "parent": "A-UN",
+   "child": "A-C"
+  },
+  {
+   "parent": "A-UN",
+   "child": "A-CS"
+  },
+  {
+   "parent": "B-FA",
+   "child": "B-P"
+  },
+  {
+   "parent": "B-MO",
+   "child": "B-P"
+  },
+  {
+   "parent": "B-FA",
+   "child": "B-S"
+  },
+  {
+   "parent": "B-MO",
+   "child": "B-S"
+  },
+  {
+   "parent": "B-P",
+   "child": "B-D"
+  },
+  {
+   "parent": "C-FA",
+   "child": "C-P"
+  },
+  {
+   "parent": "C-MO",
+   "child": "C-P"
+  },
+  {
+   "parent": "C-FA",
+   "child": "C-B"
+  },
+  {
+   "parent": "C-MO",
+   "child": "C-B"
+  },
+  {
+   "parent": "D-P",
+   "child": "D-DA"
+  },
+  {
+   "parent": "D-P",
+   "child": "D-SO"
+  }
+ ],
+ "reports": [
+  {
+   "pid": "A-P",
+   "id": "rep-A-P",
+   "issued": "2021-03-02",
+   "vcv": "{{UP_VCV}}",
+   "gene": "{{UP_GENE}}",
+   "scv": "{{UP_SCV}}",
+   "scv_version": "{{UP_FROM_VERSION}}",
+   "class_at_issue": "{{UP_FROM_CLS}}",
+   "ordering_clinician": "hs-dr-okafor",
+   "hs_tenant": "hs_demo"
+  },
+  {
+   "pid": "A-C",
+   "id": "rep-A-C",
+   "issued": "2022-05-10",
+   "vcv": "{{UP_VCV}}",
+   "gene": "{{UP_GENE}}",
+   "scv": "{{UP_SCV}}",
+   "scv_version": "{{UP_FROM_VERSION}}",
+   "class_at_issue": "{{UP_FROM_CLS}}",
+   "ordering_clinician": "hs-dr-brandt",
+   "hs_tenant": "hs_demo"
+  },
+  {
+   "pid": "D-P",
+   "id": "rep-D-P",
+   "issued": "2019-01-10",
+   "vcv": "{{UP_VCV}}",
+   "gene": "{{UP_GENE}}",
+   "scv": "{{UP_SCV}}",
+   "scv_version": "{{UP_FROM_VERSION}}",
+   "class_at_issue": "{{UP_FROM_CLS}}",
+   "ordering_clinician": "hs-dr-ellis",
+   "hs_tenant": "hs_demo"
+  },
+  {
+   "pid": "B-P",
+   "id": "rep-B-P",
+   "issued": "2024-02-12",
+   "vcv": "{{DOWN_VCV}}",
+   "gene": "{{DOWN_GENE}}",
+   "scv": "{{DOWN_SCV}}",
+   "scv_version": "{{DOWN_FROM_VERSION}}",
+   "class_at_issue": "{{DOWN_FROM_CLS}}",
+   "ordering_clinician": "hs-dr-lindqvist",
+   "hs_tenant": "hs_demo"
+  },
+  {
+   "pid": "C-P",
+   "id": "rep-C-P",
+   "issued": "2023-09-04",
+   "vcv": "{{VUSB_VCV}}",
+   "gene": "{{VUSB_GENE}}",
+   "scv": "{{VUSB_SCV}}",
+   "scv_version": "{{VUSB_FROM_VERSION}}",
+   "class_at_issue": "VUS",
+   "ordering_clinician": "hs-dr-okafor",
+   "hs_tenant": "hs_demo"
+  }
+ ],
+ "tests": [
+  {
+   "pid": "A-MO",
+   "id": "test-A-MO",
+   "vcv": "{{UP_VCV}}",
+   "result": "NEG",
+   "date": "2021-06-01"
+  },
+  {
+   "pid": "A-C",
+   "id": "test-A-C",
+   "vcv": "{{UP_VCV}}",
+   "result": "POS",
+   "date": "2022-05-10"
+  }
+ ],
+ "notices": [
+  {
+   "pid": "B-S",
+   "id": "notice-B-S-2024",
+   "vcv": "{{DOWN_VCV}}",
+   "cls": "{{DOWN_FROM_CLS}}",
+   "notice_type": "NEW_RISK",
+   "channel": "DIRECT",
+   "release": "2024-03",
+   "approved_by": "hs-gc-sato",
+   "approved_at": 1711929600000,
+   "body": "Seeded historical notice (fictional): offer of cascade testing, approved March 2024."
+  }
+ ],
+ "residence": [
+  {
+   "pid": "A-PGF",
+   "code": "J-A"
+  },
+  {
+   "pid": "A-PGM",
+   "code": "J-A"
+  },
+  {
+   "pid": "A-MGF",
+   "code": "J-A"
+  },
+  {
+   "pid": "A-MGM",
+   "code": "J-A"
+  },
+  {
+   "pid": "A-FA",
+   "code": "J-A"
+  },
+  {
+   "pid": "A-MO",
+   "code": "J-A"
+  },
+  {
+   "pid": "A-OW",
+   "code": "J-A"
+  },
+  {
+   "pid": "A-UN",
+   "code": "J-A"
+  },
+  {
+   "pid": "A-A2",
+   "code": "J-B"
+  },
+  {
+   "pid": "A-MA",
+   "code": "J-A"
+  },
+  {
+   "pid": "A-P",
+   "code": "J-A"
+  },
+  {
+   "pid": "A-S",
+   "code": "J-A"
+  },
+  {
+   "pid": "A-HS",
+   "code": "J-A"
+  },
+  {
+   "pid": "A-CH",
+   "code": "J-A"
+  },
+  {
+   "pid": "A-C",
+   "code": "J-A"
+  },
+  {
+   "pid": "A-CS",
+   "code": "J-A"
+  },
+  {
+   "pid": "B-P",
+   "code": "J-A"
+  },
+  {
+   "pid": "B-S",
+   "code": "J-A"
+  },
+  {
+   "pid": "B-MO",
+   "code": "J-A"
+  },
+  {
+   "pid": "B-FA",
+   "code": "J-A"
+  },
+  {
+   "pid": "B-D",
+   "code": "J-A"
+  },
+  {
+   "pid": "C-P",
+   "code": "J-A"
+  },
+  {
+   "pid": "C-B",
+   "code": "J-A"
+  },
+  {
+   "pid": "C-FA",
+   "code": "J-A"
+  },
+  {
+   "pid": "C-MO",
+   "code": "J-A"
+  },
+  {
+   "pid": "D-P",
+   "code": "J-A"
+  },
+  {
+   "pid": "D-DA",
+   "code": "J-A"
+  },
+  {
+   "pid": "D-SO",
+   "code": "J-A"
+  }
+ ]
+}

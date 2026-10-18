@@ -1,0 +1,77 @@
+{
+ "_readme": "Procedural memory: one Playbook node per task kind (query P6). Agents attach the playbook to every task (L3, L15); the UI shows the steps on each task card.",
+ "playbooks": [
+  {
+   "kind": "APPROVE_NOTICE",
+   "steps": [
+    "Read the proof: the class change, the release, the derivation path and the consent conditions it passed",
+    "Check the channel (direct contact or family letter) against the person's current preferences",
+    "Edit the draft if needed; it must not give medical advice or name the source relative",
+    "Approve as the named counsellor, or reject with a reason"
+   ]
+  },
+  {
+   "kind": "REVIEW_NEEDS_REVIEW",
+   "steps": [
+    "Read why the engine refused to decide (gene inheritance, deceased source, conflicting class)",
+    "Decide the route with the medical team; record it as a precedent note",
+    "Close the task; nothing is sent from this task"
+   ]
+  },
+  {
+   "kind": "ACK_BLOCKED",
+   "steps": [
+    "Read every failed condition",
+    "Confirm no other permitted route exists (the engine checked every derivation)",
+    "Acknowledge; nothing is sent"
+   ]
+  },
+  {
+   "kind": "ORPHAN_DUTY",
+   "steps": [
+    "Read the dead ends behind the orphan (who left, which clinic closed)",
+    "Assign an owning clinician",
+    "Re-run the duty map for this change"
+   ]
+  },
+  {
+   "kind": "REOPENED_DECISION",
+   "steps": [
+    "Read the decision, the class it rested on and the new class",
+    "Review with the owning clinician",
+    "Approve a replacing decision (it supersedes the old one) or keep the old one with a reason"
+   ]
+  },
+  {
+   "kind": "AMEND_REPORT",
+   "steps": [
+    "The classification moved within the same tier; issue an amended report to the owner",
+    "No patient notice is drafted"
+   ]
+  },
+  {
+   "kind": "RECONSIDER_SUBMISSION",
+   "steps": [
+    "This lab's classification differs from the current expert-panel review",
+    "Route to the lab's curation team for reconsideration",
+    "The item closes automatically when a later ClinVar archive shows the submission updated, or when the team records that it reviewed and kept its classification"
+   ]
+  },
+  {
+   "kind": "DELIVER_NOTICE",
+   "steps": [
+    "An approved notice is ready for delivery by you as the owning clinician",
+    "Deliver it through your organisation's usual channel (outside this system)",
+    "Mark the task done; Recontact never sends anything itself"
+   ]
+  },
+  {
+   "kind": "HANDOFF_FAILED",
+   "steps": [
+    "A cross-organisation handoff failed 5 times",
+    "Check that the health-system graph is reachable (/api/health)",
+    "Re-run the duty map; the handoff is recreated"
+   ]
+  }
+ ]
+}

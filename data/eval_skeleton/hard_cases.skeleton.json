@@ -1,0 +1,1879 @@
+{
+ "_readme": [
+  "40 hand-labelled hard cases. Cases hc01-hc10 have complete structures; hc11-hc40 have a category and description from which labeller B writes the structure. labels is null everywhere: ONLY the human labeller fills labels (BLUEPRINT section 12), before app/engine/duty.py exists, then commits eval/hard_cases.json and eval/labels.sha256.",
+  "Cursor must not fill labels. Cursor may validate the file against hard_cases.schema.json."
+ ],
+ "cases": [
+  {
+   "id": "hc01",
+   "category": "pruning",
+   "description": "Proband carrier; mother tested negative; maternal aunt and maternal grandmother alive and untested; father untested. Expect the maternal side to be cut and the father reachable.",
+   "change": {
+    "kind": "UP_TO_ACTIONABLE",
+    "from_cls": "VUS",
+    "to_cls": "LP",
+    "gene": "BRCA2",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": [
+    {
+     "pid": "p",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "direct",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "mo",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "fa",
+     "sex": "M",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "mgm",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "mgf",
+     "sex": "M",
+     "deceased": true,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "ma",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    }
+   ],
+   "parent_of": [
+    {
+     "parent": "mo",
+     "child": "p"
+    },
+    {
+     "parent": "fa",
+     "child": "p"
+    },
+    {
+     "parent": "mgm",
+     "child": "mo"
+    },
+    {
+     "parent": "mgf",
+     "child": "mo"
+    },
+    {
+     "parent": "mgm",
+     "child": "ma"
+    },
+    {
+     "parent": "mgf",
+     "child": "ma"
+    }
+   ],
+   "reports": [
+    {
+     "pid": "p",
+     "id": "r1",
+     "issued": "2021-01-01",
+     "scv": "SCV-X",
+     "scv_version": 1,
+     "class_at_issue": "VUS",
+     "ordering_clinician": "c1"
+    }
+   ],
+   "tests": [
+    {
+     "pid": "mo",
+     "id": "t1",
+     "result": "NEG",
+     "date": "2021-03-01"
+    }
+   ],
+   "notices": [],
+   "hs": {
+    "clinicians": [
+     {
+      "id": "c1",
+      "name": "Dr One (fictional)",
+      "role": "oncologist",
+      "active": true,
+      "left_at": null
+     },
+     {
+      "id": "md",
+      "name": "Dr Director (fictional)",
+      "role": "medical_director",
+      "active": true,
+      "left_at": null
+     }
+    ],
+    "clinics": [],
+    "practiced_at": [],
+    "handed_panel_to": [],
+    "succeeded_by": [],
+    "led_by": [],
+    "patients": [],
+    "members": [],
+    "medical_director": "md",
+    "decisions": []
+   },
+   "labels": null
+  },
+  {
+   "id": "hc02",
+   "category": "cousin_path",
+   "description": "Proband refused family contact (family_share none); first cousin is a tested carrier with a lab report and direct consent; proband's sister untested, contact_pref ok, jurisdiction J-A. Expect the sister reachable directly through the cousin derivation.",
+   "change": {
+    "kind": "UP_TO_ACTIONABLE",
+    "from_cls": "VUS",
+    "to_cls": "LP",
+    "gene": "BRCA2",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": [
+    {
+     "pid": "p",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "fa",
+     "sex": "M",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "mo",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "s",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "gf",
+     "sex": "M",
+     "deceased": true,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "gm",
+     "sex": "F",
+     "deceased": true,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "un",
+     "sex": "M",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "c",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "direct",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    }
+   ],
+   "parent_of": [
+    {
+     "parent": "fa",
+     "child": "p"
+    },
+    {
+     "parent": "mo",
+     "child": "p"
+    },
+    {
+     "parent": "fa",
+     "child": "s"
+    },
+    {
+     "parent": "mo",
+     "child": "s"
+    },
+    {
+     "parent": "gf",
+     "child": "fa"
+    },
+    {
+     "parent": "gm",
+     "child": "fa"
+    },
+    {
+     "parent": "gf",
+     "child": "un"
+    },
+    {
+     "parent": "gm",
+     "child": "un"
+    },
+    {
+     "parent": "un",
+     "child": "c"
+    }
+   ],
+   "reports": [
+    {
+     "pid": "p",
+     "id": "r1",
+     "issued": "2021-01-01",
+     "scv": "SCV-X",
+     "scv_version": 1,
+     "class_at_issue": "VUS",
+     "ordering_clinician": "c1"
+    },
+    {
+     "pid": "c",
+     "id": "r2",
+     "issued": "2022-01-01",
+     "scv": "SCV-X",
+     "scv_version": 1,
+     "class_at_issue": "VUS",
+     "ordering_clinician": "c1"
+    }
+   ],
+   "tests": [
+    {
+     "pid": "c",
+     "id": "t1",
+     "result": "POS",
+     "date": "2022-01-01"
+    }
+   ],
+   "notices": [],
+   "hs": {
+    "clinicians": [
+     {
+      "id": "c1",
+      "name": "Dr One (fictional)",
+      "role": "oncologist",
+      "active": true,
+      "left_at": null
+     },
+     {
+      "id": "md",
+      "name": "Dr Director (fictional)",
+      "role": "medical_director",
+      "active": true,
+      "left_at": null
+     }
+    ],
+    "clinics": [],
+    "practiced_at": [],
+    "handed_panel_to": [],
+    "succeeded_by": [],
+    "led_by": [],
+    "patients": [],
+    "members": [],
+    "medical_director": "md",
+    "decisions": []
+   },
+   "labels": null
+  },
+  {
+   "id": "hc03",
+   "category": "deceased_source",
+   "description": "The only carrier is deceased (family_share direct recorded before death); two adult children untested. Expect the children routed to review, not notified automatically.",
+   "change": {
+    "kind": "UP_TO_ACTIONABLE",
+    "from_cls": "VUS",
+    "to_cls": "LP",
+    "gene": "BRCA2",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": [
+    {
+     "pid": "p",
+     "sex": "M",
+     "deceased": true,
+     "contact_pref": "ok",
+     "family_share": "direct",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "d1",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "d2",
+     "sex": "M",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    }
+   ],
+   "parent_of": [
+    {
+     "parent": "p",
+     "child": "d1"
+    },
+    {
+     "parent": "p",
+     "child": "d2"
+    }
+   ],
+   "reports": [
+    {
+     "pid": "p",
+     "id": "r1",
+     "issued": "2019-01-01",
+     "scv": "SCV-X",
+     "scv_version": 1,
+     "class_at_issue": "VUS",
+     "ordering_clinician": "c1"
+    }
+   ],
+   "tests": [],
+   "notices": [],
+   "hs": {
+    "clinicians": [
+     {
+      "id": "c1",
+      "name": "Dr One (fictional)",
+      "role": "oncologist",
+      "active": true,
+      "left_at": null
+     },
+     {
+      "id": "md",
+      "name": "Dr Director (fictional)",
+      "role": "medical_director",
+      "active": true,
+      "left_at": null
+     }
+    ],
+    "clinics": [],
+    "practiced_at": [],
+    "handed_panel_to": [],
+    "succeeded_by": [],
+    "led_by": [],
+    "patients": [],
+    "members": [],
+    "medical_director": "md",
+    "decisions": []
+   },
+   "labels": null
+  },
+  {
+   "id": "hc04",
+   "category": "not_to_know",
+   "description": "Proband with direct consent; brother has exercised the right not to know; sister contact_pref ok. Expect the brother blocked with that condition listed and the sister reachable.",
+   "change": {
+    "kind": "UP_TO_ACTIONABLE",
+    "from_cls": "VUS",
+    "to_cls": "LP",
+    "gene": "BRCA2",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": [
+    {
+     "pid": "p",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "direct",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "fa",
+     "sex": "M",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "mo",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "b",
+     "sex": "M",
+     "deceased": false,
+     "contact_pref": "not_to_know",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "s",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    }
+   ],
+   "parent_of": [
+    {
+     "parent": "fa",
+     "child": "p"
+    },
+    {
+     "parent": "mo",
+     "child": "p"
+    },
+    {
+     "parent": "fa",
+     "child": "b"
+    },
+    {
+     "parent": "mo",
+     "child": "b"
+    },
+    {
+     "parent": "fa",
+     "child": "s"
+    },
+    {
+     "parent": "mo",
+     "child": "s"
+    }
+   ],
+   "reports": [
+    {
+     "pid": "p",
+     "id": "r1",
+     "issued": "2021-01-01",
+     "scv": "SCV-X",
+     "scv_version": 1,
+     "class_at_issue": "VUS",
+     "ordering_clinician": "c1"
+    }
+   ],
+   "tests": [],
+   "notices": [],
+   "hs": {
+    "clinicians": [
+     {
+      "id": "c1",
+      "name": "Dr One (fictional)",
+      "role": "oncologist",
+      "active": true,
+      "left_at": null
+     },
+     {
+      "id": "md",
+      "name": "Dr Director (fictional)",
+      "role": "medical_director",
+      "active": true,
+      "left_at": null
+     }
+    ],
+    "clinics": [],
+    "practiced_at": [],
+    "handed_panel_to": [],
+    "succeeded_by": [],
+    "led_by": [],
+    "patients": [],
+    "members": [],
+    "medical_director": "md",
+    "decisions": []
+   },
+   "labels": null
+  },
+  {
+   "id": "hc05",
+   "category": "letter_only_jurisdiction",
+   "description": "Proband with direct consent; aunt lives in J-B (letter only); uncle lives in J-A. Expect the aunt via family letter and the uncle direct.",
+   "change": {
+    "kind": "UP_TO_ACTIONABLE",
+    "from_cls": "VUS",
+    "to_cls": "LP",
+    "gene": "BRCA2",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": [
+    {
+     "pid": "p",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "direct",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "fa",
+     "sex": "M",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "gf",
+     "sex": "M",
+     "deceased": true,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "gm",
+     "sex": "F",
+     "deceased": true,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "au",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-B"
+    },
+    {
+     "pid": "un",
+     "sex": "M",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    }
+   ],
+   "parent_of": [
+    {
+     "parent": "fa",
+     "child": "p"
+    },
+    {
+     "parent": "gf",
+     "child": "fa"
+    },
+    {
+     "parent": "gm",
+     "child": "fa"
+    },
+    {
+     "parent": "gf",
+     "child": "au"
+    },
+    {
+     "parent": "gm",
+     "child": "au"
+    },
+    {
+     "parent": "gf",
+     "child": "un"
+    },
+    {
+     "parent": "gm",
+     "child": "un"
+    }
+   ],
+   "reports": [
+    {
+     "pid": "p",
+     "id": "r1",
+     "issued": "2021-01-01",
+     "scv": "SCV-X",
+     "scv_version": 1,
+     "class_at_issue": "VUS",
+     "ordering_clinician": "c1"
+    }
+   ],
+   "tests": [],
+   "notices": [],
+   "hs": {
+    "clinicians": [
+     {
+      "id": "c1",
+      "name": "Dr One (fictional)",
+      "role": "oncologist",
+      "active": true,
+      "left_at": null
+     },
+     {
+      "id": "md",
+      "name": "Dr Director (fictional)",
+      "role": "medical_director",
+      "active": true,
+      "left_at": null
+     }
+    ],
+    "clinics": [],
+    "practiced_at": [],
+    "handed_panel_to": [],
+    "succeeded_by": [],
+    "led_by": [],
+    "patients": [],
+    "members": [],
+    "medical_director": "md",
+    "decisions": []
+   },
+   "labels": null
+  },
+  {
+   "id": "hc06",
+   "category": "half_sibling",
+   "description": "Proband with direct consent; half-brother through the father only; full sister. Expect both reachable, the half-brother at second degree and the sister at first degree.",
+   "change": {
+    "kind": "UP_TO_ACTIONABLE",
+    "from_cls": "VUS",
+    "to_cls": "LP",
+    "gene": "BRCA2",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": [
+    {
+     "pid": "p",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "direct",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "fa",
+     "sex": "M",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "mo",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "ow",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "s",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "hb",
+     "sex": "M",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    }
+   ],
+   "parent_of": [
+    {
+     "parent": "fa",
+     "child": "p"
+    },
+    {
+     "parent": "mo",
+     "child": "p"
+    },
+    {
+     "parent": "fa",
+     "child": "s"
+    },
+    {
+     "parent": "mo",
+     "child": "s"
+    },
+    {
+     "parent": "fa",
+     "child": "hb"
+    },
+    {
+     "parent": "ow",
+     "child": "hb"
+    }
+   ],
+   "reports": [
+    {
+     "pid": "p",
+     "id": "r1",
+     "issued": "2021-01-01",
+     "scv": "SCV-X",
+     "scv_version": 1,
+     "class_at_issue": "VUS",
+     "ordering_clinician": "c1"
+    }
+   ],
+   "tests": [],
+   "notices": [],
+   "hs": {
+    "clinicians": [
+     {
+      "id": "c1",
+      "name": "Dr One (fictional)",
+      "role": "oncologist",
+      "active": true,
+      "left_at": null
+     },
+     {
+      "id": "md",
+      "name": "Dr Director (fictional)",
+      "role": "medical_director",
+      "active": true,
+      "left_at": null
+     }
+    ],
+    "clinics": [],
+    "practiced_at": [],
+    "handed_panel_to": [],
+    "succeeded_by": [],
+    "led_by": [],
+    "patients": [],
+    "members": [],
+    "medical_director": "md",
+    "decisions": []
+   },
+   "labels": null
+  },
+  {
+   "id": "hc07",
+   "category": "closed_clinic_orphan",
+   "description": "Proband's ordering clinician practised at a clinic that closed with no successor; the clinic's former lead is active elsewhere but the lead ended at closure. Expect the owner to be ORPHAN routed to the medical director, with the dead ends listed.",
+   "change": {
+    "kind": "UP_TO_ACTIONABLE",
+    "from_cls": "VUS",
+    "to_cls": "LP",
+    "gene": "BRCA2",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": [
+    {
+     "pid": "p",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "direct",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    }
+   ],
+   "parent_of": "TO BE WRITTEN",
+   "reports": [
+    {
+     "pid": "p",
+     "id": "r1",
+     "issued": "2021-01-01",
+     "scv": "SCV-X",
+     "scv_version": 1,
+     "class_at_issue": "VUS",
+     "ordering_clinician": "c9"
+    }
+   ],
+   "tests": [],
+   "notices": [],
+   "hs": {
+    "clinicians": [
+     {
+      "id": "c9",
+      "name": "Dr Gone (fictional)",
+      "role": "gp",
+      "active": false,
+      "left_at": "2024-01-01"
+     },
+     {
+      "id": "lead",
+      "name": "Dr Lead (fictional)",
+      "role": "gp",
+      "active": true,
+      "left_at": null
+     },
+     {
+      "id": "md",
+      "name": "Dr Director (fictional)",
+      "role": "medical_director",
+      "active": true,
+      "left_at": null
+     }
+    ],
+    "clinics": [
+     {
+      "id": "k1",
+      "name": "Closed Clinic (fictional)",
+      "open": false,
+      "closed_at": "2024-01-01"
+     }
+    ],
+    "practiced_at": [
+     {
+      "from": "c9",
+      "to": "k1",
+      "at": "2010-01-01",
+      "until": "2024-01-01"
+     }
+    ],
+    "handed_panel_to": [],
+    "succeeded_by": [],
+    "led_by": [
+     {
+      "from": "k1",
+      "to": "lead",
+      "at": "2010-01-01",
+      "until": "2024-01-01"
+     }
+    ],
+    "patients": [],
+    "members": [],
+    "medical_director": "md",
+    "decisions": []
+   },
+   "labels": null
+  },
+  {
+   "id": "hc08",
+   "category": "downgrade_correction",
+   "description": "LP -> VUS. Proband carrier; sister was notified in 2024 (Notice, channel DIRECT); brother never told. Expect corrections to proband and sister, nothing for the brother, and the sister's surveillance decision reopened.",
+   "change": {
+    "kind": "DOWN_FROM_ACTIONABLE",
+    "from_cls": "LP",
+    "to_cls": "VUS",
+    "gene": "MLH1",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": [
+    {
+     "pid": "p",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "direct",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "fa",
+     "sex": "M",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "mo",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "s",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "b",
+     "sex": "M",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    }
+   ],
+   "parent_of": [
+    {
+     "parent": "fa",
+     "child": "p"
+    },
+    {
+     "parent": "mo",
+     "child": "p"
+    },
+    {
+     "parent": "fa",
+     "child": "s"
+    },
+    {
+     "parent": "mo",
+     "child": "s"
+    },
+    {
+     "parent": "fa",
+     "child": "b"
+    },
+    {
+     "parent": "mo",
+     "child": "b"
+    }
+   ],
+   "reports": [
+    {
+     "pid": "p",
+     "id": "r1",
+     "issued": "2024-01-01",
+     "scv": "SCV-X",
+     "scv_version": 1,
+     "class_at_issue": "LP",
+     "ordering_clinician": "c1"
+    }
+   ],
+   "tests": [],
+   "notices": [
+    {
+     "pid": "s",
+     "id": "n1",
+     "cls": "LP",
+     "notice_type": "NEW_RISK",
+     "channel": "DIRECT",
+     "release": "2024-03",
+     "approved_by": "gc",
+     "approved_at": 1711929600000,
+     "body": "seeded"
+    }
+   ],
+   "hs": {
+    "clinicians": [
+     {
+      "id": "c1",
+      "name": "Dr One (fictional)",
+      "role": "oncologist",
+      "active": true,
+      "left_at": null
+     },
+     {
+      "id": "md",
+      "name": "Dr Director (fictional)",
+      "role": "medical_director",
+      "active": true,
+      "left_at": null
+     }
+    ],
+    "clinics": [],
+    "practiced_at": [],
+    "handed_panel_to": [],
+    "succeeded_by": [],
+    "led_by": [],
+    "patients": [],
+    "members": [],
+    "medical_director": "md",
+    "decisions": [
+     {
+      "id": "d1",
+      "pid": "s",
+      "kind": "SURVEILLANCE",
+      "summary": "annual surveillance (fictional)",
+      "made_at": "2024-06-01",
+      "scv": "SCV-X.1",
+      "cls_at_time": "LP",
+      "release": "2024-03",
+      "owner": "c1",
+      "approved_by": "c1",
+      "source_url": "https://www.ncbi.nlm.nih.gov/clinvar/"
+     }
+    ]
+   },
+   "labels": null
+  },
+  {
+   "id": "hc09",
+   "category": "non_dominant_gene",
+   "description": "UP change in MUTYH (autosomal recessive). Proband carrier with direct consent; parents and sibling untested. Expect the proband notified and every relative NEEDS_REVIEW.",
+   "change": {
+    "kind": "UP_TO_ACTIONABLE",
+    "from_cls": "VUS",
+    "to_cls": "P",
+    "gene": "MUTYH",
+    "inheritance": "AR",
+    "review_always": true
+   },
+   "people": [
+    {
+     "pid": "p",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "direct",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "fa",
+     "sex": "M",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "mo",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "s",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    }
+   ],
+   "parent_of": [
+    {
+     "parent": "fa",
+     "child": "p"
+    },
+    {
+     "parent": "mo",
+     "child": "p"
+    },
+    {
+     "parent": "fa",
+     "child": "s"
+    },
+    {
+     "parent": "mo",
+     "child": "s"
+    }
+   ],
+   "reports": [
+    {
+     "pid": "p",
+     "id": "r1",
+     "issued": "2021-01-01",
+     "scv": "SCV-X",
+     "scv_version": 1,
+     "class_at_issue": "VUS",
+     "ordering_clinician": "c1"
+    }
+   ],
+   "tests": [],
+   "notices": [],
+   "hs": {
+    "clinicians": [
+     {
+      "id": "c1",
+      "name": "Dr One (fictional)",
+      "role": "oncologist",
+      "active": true,
+      "left_at": null
+     },
+     {
+      "id": "md",
+      "name": "Dr Director (fictional)",
+      "role": "medical_director",
+      "active": true,
+      "left_at": null
+     }
+    ],
+    "clinics": [],
+    "practiced_at": [],
+    "handed_panel_to": [],
+    "succeeded_by": [],
+    "led_by": [],
+    "patients": [],
+    "members": [],
+    "medical_director": "md",
+    "decisions": []
+   },
+   "labels": null
+  },
+  {
+   "id": "hc10",
+   "category": "conflicting_new_class",
+   "description": "The submission moves from LP to a class normalised as OTHER or CONFLICTING. Expect NEEDS_REVIEW for the carrier, no relative evaluation, no notice drafted, no decision reopened.",
+   "change": {
+    "kind": "NEEDS_REVIEW_CLASS",
+    "from_cls": "LP",
+    "to_cls": "OTHER",
+    "gene": "BRCA1",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": [
+    {
+     "pid": "p",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "direct",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "s",
+     "sex": "F",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    },
+    {
+     "pid": "fa",
+     "sex": "M",
+     "deceased": false,
+     "contact_pref": "ok",
+     "family_share": "none",
+     "recontact_ok": true,
+     "jurisdiction": "J-A"
+    }
+   ],
+   "parent_of": [
+    {
+     "parent": "fa",
+     "child": "p"
+    },
+    {
+     "parent": "fa",
+     "child": "s"
+    }
+   ],
+   "reports": [
+    {
+     "pid": "p",
+     "id": "r1",
+     "issued": "2021-01-01",
+     "scv": "SCV-X",
+     "scv_version": 1,
+     "class_at_issue": "LP",
+     "ordering_clinician": "c1"
+    }
+   ],
+   "tests": [],
+   "notices": [],
+   "hs": {
+    "clinicians": [
+     {
+      "id": "c1",
+      "name": "Dr One (fictional)",
+      "role": "oncologist",
+      "active": true,
+      "left_at": null
+     },
+     {
+      "id": "md",
+      "name": "Dr Director (fictional)",
+      "role": "medical_director",
+      "active": true,
+      "left_at": null
+     }
+    ],
+    "clinics": [],
+    "practiced_at": [],
+    "handed_panel_to": [],
+    "succeeded_by": [],
+    "led_by": [],
+    "patients": [],
+    "members": [],
+    "medical_director": "md",
+    "decisions": []
+   },
+   "labels": null
+  },
+  {
+   "id": "hc11",
+   "category": "revoked_consent",
+   "description": "Cousin carrier had direct consent but revoked it (Consent change to none) after an earlier run; the sister reached through the cousin before must now be BLOCKED unless another derivation permits it.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc12",
+   "category": "revoked_consent",
+   "description": "Proband changes family_share from none to letter between two runs; relatives previously BLOCKED become VIA_FAMILY_LETTER.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc13",
+   "category": "two_proband_family",
+   "description": "Two siblings each have a lab report for the same variant; their shared relatives must appear once, with the shortest permitted derivation, and A2 must report the family.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc14",
+   "category": "two_proband_family",
+   "description": "Two carriers in one family with different consents (one none, one letter); relatives reachable only by letter through the second carrier.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc15",
+   "category": "panel_handoff",
+   "description": "Ordering clinician retired and handed the panel to a colleague who later also retired and handed it on; owner is the third clinician (2 hops, dates increasing).",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc16",
+   "category": "panel_handoff",
+   "description": "Panel handoff dated before the clinician joined the clinic that later closed: the time-order rule must reject the out-of-order chain and fall back to the patient's clinician of record.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc17",
+   "category": "review_gene",
+   "description": "UP change in SDHD (parent-of-origin effect, review_always): relatives NEEDS_REVIEW even though the gene is autosomal dominant.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc18",
+   "category": "review_gene",
+   "description": "UP change in HFE (AR, p.C282Y homozygotes only): carrier notified; relatives NEEDS_REVIEW.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc19",
+   "category": "non_dominant_gene",
+   "description": "UP change in GLA (X-linked): relatives NEEDS_REVIEW; carriers notified.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc20",
+   "category": "vus_resolved",
+   "description": "VUS -> B with a decision 'kept on surveillance pending VUS': carrier gets VUS_RESOLVED notice, the decision reopens, relatives no action.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc21",
+   "category": "vus_resolved",
+   "description": "VUS -> LB where a relative had (unusually) been notified about the VUS: that relative gets a CORRECTION.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc22",
+   "category": "within_tier",
+   "description": "LP -> P: carriers NO_ACTION with an AMEND_REPORT task to the owner; no decision reopens.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc23",
+   "category": "within_tier",
+   "description": "LB -> B: nothing for anyone; no decision reopens.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc24",
+   "category": "already_notified",
+   "description": "Second run of the same change after a sister's notice was approved: she is ALREADY_NOTIFIED; others unchanged.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc25",
+   "category": "already_notified",
+   "description": "Downgrade after an approved upgrade notice in an earlier release: the notified relative now gets a CORRECTION (memory across releases).",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc26",
+   "category": "no_report_cites",
+   "description": "A real class change for a variant no report in this lab cites: the duty map is empty with the proof 'no report in this organisation cites VCV ...'.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc27",
+   "category": "pruning",
+   "description": "Tested-negative grandparent on the paternal side cuts the paternal aunt but not the father's own descendants through the other grandparent... labeller to define the exact structure.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc28",
+   "category": "pruning",
+   "description": "Tested-negative child of the proband cuts the grandchild through that child but not the grandchild through another child.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc29",
+   "category": "deceased_source",
+   "description": "A deceased carrier and a living consenting carrier in the same family: relatives reachable through the living carrier get notices; those reachable only through the deceased carrier go to review.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc30",
+   "category": "not_to_know",
+   "description": "Relative with contact_pref no_contact (clinic) but reachable by family letter through a consenting carrier: VIA_FAMILY_LETTER.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc31",
+   "category": "letter_only_jurisdiction",
+   "description": "Relative in J-B with a direct-consent source: VIA_FAMILY_LETTER; the failed condition names J-B.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc32",
+   "category": "half_sibling",
+   "description": "Half-sister through the mother when the mother tested negative: cut; full siblings via the father reachable.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc33",
+   "category": "closed_clinic_orphan",
+   "description": "Clinic closed with a successor clinic whose current lead is active: owner resolved at 3 hops (not ORPHAN).",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc34",
+   "category": "closed_clinic_orphan",
+   "description": "Ordering clinician inactive with no handoff, but the patient has an active clinician of record: owner by fallback (W3), status FALLBACK.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc35",
+   "category": "downgrade_correction",
+   "description": "P -> LB with two reopened decisions (surgery recommendation, surveillance) owned by a clinician who has since left: decisions reopen and the owner resolves through W1.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc36",
+   "category": "downgrade_correction",
+   "description": "LP -> B where the earlier relative notice was by family letter and the relative has since asked not to know: NEEDS_REVIEW (correction cannot be sent by the earlier channel).",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc37",
+   "category": "cousin_path",
+   "description": "Cousin path exists but the cousin lives in J-B and the target relative in J-A: the target's jurisdiction decides (direct allowed).",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc38",
+   "category": "cousin_path",
+   "description": "Cousin path longer than 4 hops (second cousin): not reachable; relative outside the duty map.",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc39",
+   "category": "two_proband_family",
+   "description": "Proband and an already-tested positive relative without a lab report from this lab: only report holders are sources (labeller confirms expected treatment).",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  },
+  {
+   "id": "hc40",
+   "category": "non_dominant_gene",
+   "description": "UP change in a gene marked AD in genes.json but review_always false, with a de novo note in the description: engine still applies AD rules (labeller documents expected output).",
+   "change": {
+    "kind": "TO BE WRITTEN",
+    "from_cls": "",
+    "to_cls": "",
+    "gene": "",
+    "inheritance": "AD",
+    "review_always": false
+   },
+   "people": "TO BE WRITTEN BY LABELLER B FROM THE DESCRIPTION",
+   "parent_of": "TO BE WRITTEN",
+   "reports": "TO BE WRITTEN",
+   "tests": [],
+   "notices": [],
+   "hs": "TO BE WRITTEN",
+   "labels": null
+  }
+ ]
+}

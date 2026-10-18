@@ -1,0 +1,151 @@
+{
+ "_readme": [
+  "Parameters of the seeded synthetic pedigree generator (scripts/generate_world.py). Published with the repo so anyone can regenerate the eval worlds. Every person, clinician and organisation produced is synthetic and labelled (fictional).",
+  "Calibration: values marked source are taken from the literature cited; values marked assumption are our illustrative choices, stated as such in the README. The generator never reads real patient data.",
+  "Determinism: the same seed and the same scenario list produce byte-identical lab.json and hs.json (sorted keys, stable id scheme). The RNG is Python random.Random(seed); numpy is not used."
+ ],
+ "rng": "python random.Random(seed)",
+ "id_scheme": "<world>-<family index 3 digits>-<role code>-<n>, e.g. w7-014-SIB-2",
+ "pedigree": {
+  "generations": 4,
+  "proband_generation": 2,
+  "max_kinship_hops": 4,
+  "sibship_size": {
+   "dist": "poisson",
+   "mean": 2.0,
+   "min": 0,
+   "max": 6,
+   "kind": "assumption",
+   "note": "approximate completed family size"
+  },
+  "partner_present_prob": {
+   "value": 0.85,
+   "kind": "assumption"
+  },
+  "half_sibship_prob": {
+   "value": 0.08,
+   "kind": "assumption",
+   "note": "probability that a parent has children with a second partner"
+  },
+  "deceased_prob_by_generation": {
+   "value": [
+    0.6,
+    0.2,
+    0.03,
+    0.0
+   ],
+   "kind": "assumption"
+  },
+  "birth_year_by_generation": {
+   "value": [
+    1935,
+    1962,
+    1988,
+    2012
+   ],
+   "jitter_years": 6,
+   "kind": "assumption"
+  },
+  "two_proband_family_prob": {
+   "value": 0.05,
+   "kind": "assumption",
+   "note": "a second carrier with a report from this lab in the same family (exercises algo.WCC merge, query A2)"
+  }
+ },
+ "genetics": {
+  "model": "gene drop from one founder carrier chosen uniformly among the proband's four grandparents; Mendelian transmission with probability 0.5 per meiosis; no de novo; complete detectability of the variant by testing",
+  "applies_to": "scenarios whose gene has inheritance AD and review_always false; other genes still get pedigrees (their relatives must come out NEEDS_REVIEW)"
+ },
+ "testing": {
+  "first_degree_tested_prob": {
+   "value": 0.41,
+   "kind": "source",
+   "source": "Frey MK et al., J Clin Oncol 2022: 41% of at-risk relatives completed cascade testing across 87 studies"
+  },
+  "second_degree_tested_prob": {
+   "value": 0.15,
+   "kind": "assumption"
+  },
+  "third_degree_tested_prob": {
+   "value": 0.05,
+   "kind": "assumption"
+  },
+  "test_date_after_proband_report_days": {
+   "min": 30,
+   "max": 900,
+   "kind": "assumption"
+  },
+  "tested_positive_gets_lab_report": true
+ },
+ "consent": {
+  "carrier_family_share": {
+   "value": {
+    "none": 0.15,
+    "letter": 0.55,
+    "direct": 0.3
+   },
+   "kind": "assumption"
+  },
+  "relative_contact_pref": {
+   "value": {
+    "ok": 0.9,
+    "no_contact": 0.06,
+    "not_to_know": 0.04
+   },
+   "kind": "assumption"
+  },
+  "carrier_recontact_ok": {
+   "value": 0.92,
+   "kind": "assumption"
+  },
+  "jurisdiction": {
+   "value": {
+    "J-A": 0.7,
+    "J-B": 0.3
+   },
+   "kind": "assumption",
+   "note": "illustrative rule set from data/demo_tenants/lab_demo.json"
+  }
+ },
+ "health_system": {
+  "clinicians": {
+   "value": 40,
+   "kind": "assumption"
+  },
+  "departed_with_panel_handoff": {
+   "value": 0.25,
+   "kind": "assumption"
+  },
+  "departed_without_handoff": {
+   "value": 0.05,
+   "kind": "assumption"
+  },
+  "clinics": {
+   "value": 6,
+   "closed_with_successor": 1,
+   "closed_without_successor": 1,
+   "kind": "assumption"
+  },
+  "carrier_decision_prob": {
+   "value": 0.6,
+   "kind": "assumption",
+   "note": "a Decision resting on the class at issue (surveillance, surgery recommendation)"
+  },
+  "first_degree_relative_decision_prob": {
+   "value": 0.2,
+   "kind": "assumption",
+   "note": "e.g. discharged from screening while the variant was a VUS"
+  },
+  "medical_director": 1
+ },
+ "scenario_world": {
+  "families_per_scenario": {
+   "min": 1,
+   "max": 3
+  },
+  "report_issued_years_before_change": {
+   "min": 1,
+   "max": 6
+  }
+ }
+}

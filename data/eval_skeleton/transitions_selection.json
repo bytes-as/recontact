@@ -1,0 +1,54 @@
+{
+ "_readme": [
+  "Selection protocol for the 60 real ClinVar transitions of the frozen eval. eval/select_transitions.py applies it to eval/transitions_2024-10_2026-10.tsv (built by scripts/extract_clinvar.py) and writes eval/selected_transitions.json. The seed and this file are committed before the engine exists."
+ ],
+ "source": "SCV-level class changes between archive/2024/submission_summary_2024-10 and archive/submission_summary_2026-10, restricted to genes with kb_scope true in data/genes.json",
+ "seed": 20261018,
+ "strata": [
+  {
+   "name": "up",
+   "kind": "UP_TO_ACTIONABLE",
+   "n": 25,
+   "expect": "duty map with notices where permitted"
+  },
+  {
+   "name": "down",
+   "kind": "DOWN_FROM_ACTIONABLE",
+   "n": 15,
+   "expect": "corrections and reopened decisions"
+  },
+  {
+   "name": "conflicting",
+   "kind": "NEEDS_REVIEW_CLASS",
+   "n": 10,
+   "expect": "NEEDS_REVIEW, zero notices"
+  },
+  {
+   "name": "unchanged",
+   "kind": "UNCHANGED_CONTROL",
+   "n": 10,
+   "expect": "no ClassChange is created (same class, possibly a version bump); zero runs"
+  }
+ ],
+ "constraints": [
+  "at most 3 transitions per gene per stratum",
+  "at least 5 of the 25 up transitions in genes with review_always true (to test NEEDS_REVIEW routing)",
+  "unchanged controls are SCVs present in both snapshots with the same normalised class; half of them must have a version bump"
+ ],
+ "worlds": {
+  "dev_seeds": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "heldout": "30 seeds chosen by labeller B; only sha256(seed list as JSON) is committed before engine freeze (eval/heldout_seeds.sha256); the list is revealed at final eval (commit-reveal)",
+  "families_per_transition": "1-3 per data/generator_params.json scenario_world"
+ }
+}

@@ -1,0 +1,271 @@
+{
+ "_readme": [
+  "Fixed demo health-system tenant. Every clinician, clinic, patient link and decision is synthetic and labelled (fictional). Loaded into graph hs_demo by scripts/seed_demo.py with queries P6-P14.",
+  "Succession facts: Dr Okafor retired 2023-06-30 and handed her panel to Dr Lindqvist (W1: 1 hop). Dr Brandt practised at Northgate Clinic, which was succeeded by Riverside Clinic on 2024-03-01, now led by Dr Chen (W1: 3 hops; Dr Moreau's lead of Northgate ended). Dr Ellis practised at Harbour Heart Clinic, closed 2024-06-30 with no successor; its lead Dr Novak's lead ended at closure, so there is no path (ORPHAN -> medical director).",
+  "Placeholders {{...}} as in lab_demo.json."
+ ],
+ "org": {
+  "id": "hs_demo",
+  "name": "Riverside Health (fictional)",
+  "kind": "health_system",
+  "mirrors_submitter": null
+ },
+ "clinicians": [
+  {
+   "id": "hs-dr-okafor",
+   "name": "Dr Ama Okafor (fictional)",
+   "role": "oncologist",
+   "active": false,
+   "left_at": "2023-06-30"
+  },
+  {
+   "id": "hs-dr-lindqvist",
+   "name": "Dr Sofia Lindqvist (fictional)",
+   "role": "oncologist",
+   "active": true,
+   "left_at": null
+  },
+  {
+   "id": "hs-dr-brandt",
+   "name": "Dr Felix Brandt (fictional)",
+   "role": "general practitioner",
+   "active": false,
+   "left_at": "2019-05-01"
+  },
+  {
+   "id": "hs-dr-moreau",
+   "name": "Dr Claire Moreau (fictional)",
+   "role": "general practitioner",
+   "active": false,
+   "left_at": "2024-03-01"
+  },
+  {
+   "id": "hs-dr-chen",
+   "name": "Dr Wei Chen (fictional)",
+   "role": "general practitioner",
+   "active": true,
+   "left_at": null
+  },
+  {
+   "id": "hs-dr-ellis",
+   "name": "Dr Ruth Ellis (fictional)",
+   "role": "cardiologist",
+   "active": false,
+   "left_at": "2024-06-30"
+  },
+  {
+   "id": "hs-dr-novak",
+   "name": "Dr Petr Novak (fictional)",
+   "role": "cardiologist",
+   "active": true,
+   "left_at": null
+  },
+  {
+   "id": "hs-gc-sato",
+   "name": "Yuki Sato, genetic counsellor (fictional)",
+   "role": "genetic_counsellor",
+   "active": true,
+   "left_at": null
+  },
+  {
+   "id": "hs-gc-ibrahim",
+   "name": "Amal Ibrahim, genetic counsellor (fictional)",
+   "role": "genetic_counsellor",
+   "active": true,
+   "left_at": null
+  },
+  {
+   "id": "hs-md-garcia",
+   "name": "Dr Lucia Garcia, medical director (fictional)",
+   "role": "medical_director",
+   "active": true,
+   "left_at": null
+  }
+ ],
+ "clinics": [
+  {
+   "id": "hs-clinic-northgate",
+   "name": "Northgate Clinic (fictional)",
+   "open": false,
+   "closed_at": "2024-03-01"
+  },
+  {
+   "id": "hs-clinic-riverside",
+   "name": "Riverside Clinic (fictional)",
+   "open": true,
+   "closed_at": null
+  },
+  {
+   "id": "hs-clinic-harbour",
+   "name": "Harbour Heart Clinic (fictional)",
+   "open": false,
+   "closed_at": "2024-06-30"
+  }
+ ],
+ "practiced_at": [
+  {
+   "from": "hs-dr-brandt",
+   "to": "hs-clinic-northgate",
+   "at": "2015-01-01",
+   "until": "2019-05-01"
+  },
+  {
+   "from": "hs-dr-ellis",
+   "to": "hs-clinic-harbour",
+   "at": "2016-01-01",
+   "until": "2024-06-30"
+  }
+ ],
+ "handed_panel_to": [
+  {
+   "from": "hs-dr-okafor",
+   "to": "hs-dr-lindqvist",
+   "at": "2023-06-30"
+  }
+ ],
+ "succeeded_by": [
+  {
+   "from": "hs-clinic-northgate",
+   "to": "hs-clinic-riverside",
+   "at": "2024-03-01"
+  }
+ ],
+ "led_by": [
+  {
+   "from": "hs-clinic-northgate",
+   "to": "hs-dr-moreau",
+   "at": "2012-01-01",
+   "until": "2024-03-01"
+  },
+  {
+   "from": "hs-clinic-riverside",
+   "to": "hs-dr-chen",
+   "at": "2024-03-01",
+   "until": null
+  },
+  {
+   "from": "hs-clinic-harbour",
+   "to": "hs-dr-novak",
+   "at": "2016-01-01",
+   "until": "2024-06-30"
+  }
+ ],
+ "patients": [
+  {
+   "pid": "A-P",
+   "clinician": "hs-dr-okafor",
+   "from": "2019-01-01",
+   "until": "2023-06-30"
+  },
+  {
+   "pid": "A-S",
+   "clinician": "hs-dr-chen",
+   "from": "2020-02-01",
+   "until": null
+  },
+  {
+   "pid": "B-P",
+   "clinician": "hs-dr-lindqvist",
+   "from": "2024-01-15",
+   "until": null
+  },
+  {
+   "pid": "B-S",
+   "clinician": "hs-dr-lindqvist",
+   "from": "2024-04-01",
+   "until": null
+  },
+  {
+   "pid": "C-P",
+   "clinician": "hs-dr-chen",
+   "from": "2021-05-01",
+   "until": null
+  }
+ ],
+ "members": [
+  {
+   "team_id": "team-cancer-genetics",
+   "team_name": "Cancer genetics",
+   "clinician": "hs-dr-lindqvist"
+  },
+  {
+   "team_id": "team-cancer-genetics",
+   "team_name": "Cancer genetics",
+   "clinician": "hs-gc-sato"
+  },
+  {
+   "team_id": "team-inherited-cardiac",
+   "team_name": "Inherited cardiac conditions",
+   "clinician": "hs-dr-novak"
+  },
+  {
+   "team_id": "team-inherited-cardiac",
+   "team_name": "Inherited cardiac conditions",
+   "clinician": "hs-gc-ibrahim"
+  },
+  {
+   "team_id": "team-primary-care",
+   "team_name": "Primary care",
+   "clinician": "hs-dr-chen"
+  }
+ ],
+ "medical_director": "hs-md-garcia",
+ "decisions": [
+  {
+   "id": "dec-A-S-2022",
+   "pid": "A-S",
+   "kind": "DISCHARGE_FROM_SCREENING",
+   "summary": "Mila discharged from enhanced screening because the family variant was a VUS (fictional)",
+   "made_at": "2022-03-01",
+   "vcv": "{{UP_VCV}}",
+   "scv": "{{UP_SCV}}.{{UP_FROM_VERSION}}",
+   "cls_at_time": "{{UP_FROM_CLS}}",
+   "release": "2022-03",
+   "owner": "hs-dr-chen",
+   "approved_by": "hs-dr-chen",
+   "source_url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/{{UP_VCV}}/"
+  },
+  {
+   "id": "dec-B-P-2024",
+   "pid": "B-P",
+   "kind": "SURGERY_RECOMMENDATION",
+   "summary": "Risk-reducing surgery discussed and recommended on the basis of the family variant (fictional)",
+   "made_at": "2024-05-20",
+   "vcv": "{{DOWN_VCV}}",
+   "scv": "{{DOWN_SCV}}.{{DOWN_FROM_VERSION}}",
+   "cls_at_time": "{{DOWN_FROM_CLS}}",
+   "release": "2024-03",
+   "owner": "hs-dr-lindqvist",
+   "approved_by": "hs-gc-sato",
+   "source_url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/{{DOWN_VCV}}/"
+  },
+  {
+   "id": "dec-B-S-2024",
+   "pid": "B-S",
+   "kind": "SURVEILLANCE",
+   "summary": "Annual surveillance started after cascade testing was offered (fictional)",
+   "made_at": "2024-06-11",
+   "vcv": "{{DOWN_VCV}}",
+   "scv": "{{DOWN_SCV}}.{{DOWN_FROM_VERSION}}",
+   "cls_at_time": "{{DOWN_FROM_CLS}}",
+   "release": "2024-03",
+   "owner": "hs-dr-lindqvist",
+   "approved_by": "hs-gc-sato",
+   "source_url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/{{DOWN_VCV}}/"
+  },
+  {
+   "id": "dec-C-P-2023",
+   "pid": "C-P",
+   "kind": "SURVEILLANCE",
+   "summary": "Kept on enhanced surveillance pending reclassification of a VUS (fictional)",
+   "made_at": "2023-10-02",
+   "vcv": "{{VUSB_VCV}}",
+   "scv": "{{VUSB_SCV}}.{{VUSB_FROM_VERSION}}",
+   "cls_at_time": "VUS",
+   "release": "2023-09",
+   "owner": "hs-dr-okafor",
+   "approved_by": "hs-dr-okafor",
+   "source_url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/{{VUSB_VCV}}/"
+  }
+ ]
+}

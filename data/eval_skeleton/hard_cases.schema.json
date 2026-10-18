@@ -1,0 +1,121 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Recontact hard case (eval)",
+ "type": "object",
+ "required": [
+  "id",
+  "category",
+  "description",
+  "change",
+  "people",
+  "parent_of",
+  "reports",
+  "tests",
+  "hs",
+  "labels"
+ ],
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^hc\\d{2}$"
+  },
+  "category": {
+   "enum": [
+    "pruning",
+    "cousin_path",
+    "deceased_source",
+    "revoked_consent",
+    "not_to_know",
+    "letter_only_jurisdiction",
+    "two_proband_family",
+    "half_sibling",
+    "closed_clinic_orphan",
+    "panel_handoff",
+    "non_dominant_gene",
+    "review_gene",
+    "downgrade_correction",
+    "vus_resolved",
+    "within_tier",
+    "conflicting_new_class",
+    "already_notified",
+    "no_report_cites"
+   ]
+  },
+  "description": {
+   "type": "string"
+  },
+  "change": {
+   "type": "object",
+   "required": [
+    "kind",
+    "from_cls",
+    "to_cls",
+    "gene",
+    "inheritance",
+    "review_always"
+   ],
+   "properties": {
+    "kind": {
+     "type": "string"
+    },
+    "from_cls": {
+     "type": "string"
+    },
+    "to_cls": {
+     "type": "string"
+    },
+    "gene": {
+     "type": "string"
+    },
+    "inheritance": {
+     "enum": [
+      "AD",
+      "AR",
+      "XL"
+     ]
+    },
+    "review_always": {
+     "type": "boolean"
+    }
+   }
+  },
+  "people": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "pid",
+     "sex",
+     "deceased",
+     "contact_pref",
+     "family_share",
+     "recontact_ok",
+     "jurisdiction"
+    ]
+   }
+  },
+  "parent_of": {
+   "type": "array"
+  },
+  "reports": {
+   "type": "array"
+  },
+  "tests": {
+   "type": "array"
+  },
+  "notices": {
+   "type": "array"
+  },
+  "hs": {
+   "type": "object",
+   "description": "clinicians, clinics, succession edges, patients, decisions in the shape of data/demo_tenants/hs_demo.json"
+  },
+  "labels": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "description": "WRITTEN BY HUMAN LABELLER B ONLY, before app/engine/duty.py exists. Map pid -> {verdict, notice_type, channel, owner_id or 'ORPHAN'}; plus reopened_decisions: [decision ids]. null in this skeleton."
+  }
+ }
+}

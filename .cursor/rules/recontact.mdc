@@ -1,0 +1,14 @@
+---
+description: Recontact project rules (always on)
+alwaysApply: true
+---
+
+- Start with `BLUEPRINT.md` section 0 (document map). Rules: `AGENTS.md`. Work list: `docs/GOALS.md` (147 goals). Flows: `docs/FLOWS.md`. Contract: `docs/API.md`. Pages and copy: `docs/UI.md`. Cypher: `docs/queries.cypher` (81 blocks, all run on FalkorDB). Hackathon rules mapping: `docs/REQUIREMENTS.md`.
+- FalkorDB is the heart: every answer and every memory write goes through FalkorDB. The release diff, exposure, consent, owners, decisions and reconsideration are Cypher; the Python engine only applies BLUEPRINT section 6 tables to graph rows.
+- LLMs only rephrase drafts (quote-checked) and the product works with no LLM key. Nothing is sent without a named counsellor's approval; Recontact never sends anything itself.
+- Append-only runs, duties, notices, events, consents, decisions and SCV versions. Bounded variable-length paths only. MCP SDK pinned `mcp>=1.10,<2`.
+- Tenants never read each other's graphs: Handoff nodes with minimum payloads only. Dry runs on `demo` write nothing.
+- All people and organisations are synthetic and labelled "(fictional)". Never call a real lab's classification stale, wrong, incorrect, outdated, an error or a mistake.
+- Automatic relative routing only for AD genes without a review flag; otherwise NEEDS_REVIEW.
+- Do not write eval labels, the reference implementation or held-out seeds (human goals G108, G109).
+- Keep the hour-8 core working; follow the cut order in BLUEPRINT.md section 15 if behind.

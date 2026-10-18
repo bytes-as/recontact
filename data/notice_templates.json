@@ -1,0 +1,60 @@
+{
+ "_readme": [
+  "Deterministic notice drafts (Drafter agent). An optional LLM may only rephrase a draft; app/agents/drafter.py then checks that every {slot} value still appears verbatim, that no class word other than the from/to classes appears, and that no forbidden phrase (UI.md copy rules) appears. Failing drafts fall back to these templates.",
+  "Drafts are for a named genetic counsellor to edit and approve. They are not medical advice and never name the source relative."
+ ],
+ "slots": [
+  "person_first_name",
+  "gene",
+  "variant",
+  "from_class_words",
+  "to_class_words",
+  "release",
+  "owner_name",
+  "service_name"
+ ],
+ "class_words": {
+  "P": "pathogenic",
+  "LP": "likely pathogenic",
+  "VUS": "of uncertain significance",
+  "LB": "likely benign",
+  "B": "benign"
+ },
+ "templates": {
+  "UPGRADE": {
+   "title": "Update to your genetic test result ({gene})",
+   "body": "Dear {person_first_name},\n\nThe laboratory that analysed your genetic test has updated how it classifies the {gene} variant in your report ({variant}). It was previously reported as {from_class_words}; it is now classified as {to_class_words} (ClinVar release {release}).\n\n{owner_name} and the {service_name} team would like to talk with you about what this update means for you and your care. Please contact us to arrange a conversation.\n\nThis letter is not a diagnosis. Please do not change any treatment before speaking with your care team."
+  },
+  "NEW_RISK_DIRECT": {
+   "title": "An invitation to talk with the {service_name} team",
+   "body": "Dear {person_first_name},\n\nA genetic finding in your family may be relevant to your health. The {service_name} team would like to offer you a confidential conversation and, if you wish, a genetic test.\n\nYou are under no obligation. If you prefer not to receive further information, tell us and we will respect that.\n\nThis letter is not a diagnosis."
+  },
+  "NEW_RISK_LETTER": {
+   "title": "Family letter: information you may wish to share",
+   "body": "This letter is for you to share with relatives if you choose to.\n\nA genetic variant in the {gene} gene has been found in our family. Relatives can ask their own doctor or a genetics service about a confidential conversation and testing.\n\nVariant: {variant}. Current classification: {to_class_words} (ClinVar release {release}).\n\nThis letter is not a diagnosis."
+  },
+  "CORRECTION": {
+   "title": "Correction to earlier information about a genetic variant ({gene})",
+   "body": "Dear {person_first_name},\n\nWe wrote to you earlier about the {gene} variant {variant}, which was then classified as {from_class_words}. The laboratory has updated its classification to {to_class_words} (ClinVar release {release}).\n\nThis may change the advice you were given. {owner_name} and the {service_name} team would like to talk with you before you make any decision about screening or treatment."
+  },
+  "VUS_RESOLVED": {
+   "title": "Update on the uncertain finding in your genetic test ({gene})",
+   "body": "Dear {person_first_name},\n\nYour genetic test reported a {gene} variant ({variant}) of uncertain significance. The laboratory has updated its classification to {to_class_words} (ClinVar release {release}).\n\n{owner_name} and the {service_name} team would like to talk with you about whether any part of your care plan should be reviewed."
+  }
+ },
+ "forbidden_phrases": [
+  "you have cancer",
+  "you will develop",
+  "diagnos",
+  "you must",
+  "stale",
+  "wrong",
+  "incorrect",
+  "error",
+  "mistake",
+  "negligen",
+  "outdated",
+  "faulty"
+ ],
+ "allowed_exception": "the word 'diagnosis' is allowed only inside the fixed sentence 'This letter is not a diagnosis.'"
+}
